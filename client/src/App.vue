@@ -1,19 +1,25 @@
 <template>
   <div id="app">
-    <Header />
+    <v-app>
+      <Header />
+      <main>
+        <v-container fluid>
+          <router-view></router-view>  
+        </v-container>
+      </main>
+    </v-app>
     
-    <router-view></router-view>  
+   
 
   </div>
 </template>
 
 <script>
 import Header from '@/components/Header.vue'
-
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
   }
 }
 </script>
@@ -27,5 +33,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+/* .btn-title {
+  color: white;
+}
+.header-title {
+  color: white;
+}  */
 
 </style>
