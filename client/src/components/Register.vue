@@ -10,7 +10,7 @@
 					<div class="pl-4 pr-4 pt-2 pb-2">
 						<v-text-field label="E-mail" v-model="email"></v-text-field>
 						<br />
-						<v-text-field label="Password" v-model="password"></v-text-field>
+						<v-text-field label="Password" type="password" v-model="password"></v-text-field>
 						<br />
 						<div class="error" v-html="error" />
 						<v-btn class="purple" dark @click="register">Register</v-btn>
