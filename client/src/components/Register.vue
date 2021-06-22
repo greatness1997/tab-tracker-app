@@ -1,11 +1,8 @@
 <template>
 	<div>
-		<v-layout column>
+		<v-layout row wrap>
 			<v-flex xs6 offset-xs3>
-				<div class="white elevation-2">
-					<v-toolbar flat dense class="purple" dark>
-						Register
-					</v-toolbar>
+				<panel title="Register">
 
 					<div class="pl-4 pr-4 pt-2 pb-2">
 						<v-text-field label="E-mail" v-model="email"></v-text-field>
@@ -15,7 +12,7 @@
 						<div class="error" v-html="error" />
 						<v-btn class="purple" dark @click="register">Register</v-btn>
 					</div>
-				</div>
+				</panel>
 			</v-flex>
 		</v-layout>
 	</div>
@@ -23,6 +20,7 @@
 
 <script>
 	import AuthenticationService from "@/services/AuthenticationService";
+	import Panel from "@/components/Panel";
 	export default {
 		data() {
 			return {
@@ -44,6 +42,10 @@
 					this.error = error.response.data.error;
 				}
 			}
+		
+		},
+		components: {
+			Panel
 		}
 	};
 </script>
