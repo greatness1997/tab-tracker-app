@@ -21,7 +21,7 @@
 		</v-layout>
 
 
-		<panel /> 
+		
 	</div>
 </template>
 
@@ -31,11 +31,10 @@
 	import Tab from "./Tab";
 	import YouTube from "./YouTube";
 	import SongsService from "@/services/SongsService";
-	import Panel from "@/components/Panel";
+
 
 	export default {
 		components: {
-			Panel,
 			SongMetadata,
 			YouTube,
 			Lyrics,

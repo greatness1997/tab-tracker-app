@@ -3,12 +3,18 @@ const path = require("path");
 const Sequelize = require("sequelize");
 const config = require("../config/config");
 const db = {};
+const Op = Sequelize.Op
+
+const operatorAliases = {
+  $like: Op.like,
+  $not: Op.not
+}
 
 const sequelize = new Sequelize(
   config.db.database,
   config.db.user,
   config.db.password,
-  config.db.options
+  { ...config.db.options, operatorAliases }
 );
 
 fs.readdirSync(__dirname)

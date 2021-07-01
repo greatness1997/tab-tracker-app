@@ -1,12 +1,10 @@
 <template>
-	<div>
-		<v-layout row wrap>
-			<v-flex xs6 offset-xs3>
-				<div class="white elevation-2">
+	<div>		
+        <div class="white elevation-2">
 					<panel title="Songs">
 						<v-btn
 							slot="action"
-							@click="navigateTo({ name:'songs-create' })"
+							:to="{name:'songs-create'}"
 							class="purple lighten-2"
 							dark
 							medium
@@ -26,10 +24,10 @@
 									<v-btn
 										class="purple"
 										dark
-										@click="navigateTo({name: 'song', params: {
+										:to="{name: 'song', params: {
 									songId: song.id
 								}
-								})"
+								}"
 									>View</v-btn>
 								</v-flex>
 
@@ -40,32 +38,27 @@
 						</div>
 					</panel>
 				</div>
-			</v-flex>
-		</v-layout>
 	</div>
 </template>
 
 <script>
 	import SongsService from "@/services/SongsService";
-	import Panel from "@/components/Panel";
+	
 	export default {
-		components: {
-			Panel
-		},
-		data() {
-			return {
-				songs: null
-			};
-		},
-		methods: {
-			navigateTo(route) {
-				this.$router.push(route);
+			data() {
+				return {
+					songs: null
+				};
+			},
+			watch: {
+				'$route.query.search': {
+				immediate: true,
+				async handler(value) {
+					this.songs = (await SongsService.index(value)).data
+				}
 			}
-		},
-		async mounted() {
-			this.songs = (await SongsService.index()).data;
 		}
-	};
+	}
 </script>
 
 <style scoped>
